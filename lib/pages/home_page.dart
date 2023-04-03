@@ -17,23 +17,23 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final Map<String, int?> _main = {
-    'Idea': null,
-    'Software': null,
-    'Prototype': null,
+  final Map<String, bool> _main = {
+    'Idea': false,
+    'Software': false,
+    'Prototype': false,
   };
 
-  final Map<String, int?> _machines = {
-    '3D Printer': null,
-    'Laser Cutter': null,
-    'CNC Mill': null,
-    'Vinyl Cutter': null,
-    'Sewing Machine': null,
-    'Embroidery Machine': null,
-    'Soldering Station': null,
-    'Oscilloscope': null,
-    'Multimeter': null,
-    'Logic Analyzer': null,
+  final Map<String, bool> _machines = {
+    '3D Printer': false,
+    'Laser Cutter': false,
+    'CNC Mill': false,
+    'Vinyl Cutter': false,
+    'Sewing Machine': false,
+    'Embroidery Machine': false,
+    'Soldering Station': false,
+    'Oscilloscope': false,
+    'Multimeter': false,
+    'Logic Analyzer': false,
   };
 
   String? _notes;
@@ -77,29 +77,18 @@ class _HomePageState extends State<HomePage> {
                 const SizedBox(height: kGapMedium),
                 SelectionChipFabLab(
                   title: 'What do you want to do?',
-                  start: _main,
-                  onSelected: (bool selected, String key) {
-                    setState(() {
-                      _main.update(
-                        key,
-                        (value) => selected ? 1 : null,
-                      );
-                    });
+                  data: _main,
+                  onSelected: (_) {
+                    setState(() {});
                   },
                 ),
                 const SizedBox(height: kGapLarge),
                 SelectionChipFabLab(
-                  title: 'Which machines do you need?',
-                  start: _machines,
-                  onSelected: (bool selected, String key) {
-                    setState(() {
-                      _machines.update(
-                        key,
-                        (value) => selected ? 1 : null,
-                      );
-                    });
-                  },
-                ),
+                    title: 'Which machines do you need?',
+                    data: _machines,
+                    onSelected: (_) {
+                      setState(() {});
+                    }),
                 const SizedBox(height: kGapLarge),
                 TextFieldFabLab(
                   onChanged: (String value) {

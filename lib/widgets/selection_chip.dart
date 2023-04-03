@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 class SelectionChipFabLab extends StatelessWidget {
   const SelectionChipFabLab({
     super.key,
-    required this.start,
+    required this.data,
     required this.onSelected,
     required this.title,
   });
 
-  final Map<String, int?> start;
+  final Map<String, bool> data;
 
-  final Function(bool, String) onSelected;
+  final Function(bool) onSelected;
 
   final String title;
 
@@ -34,15 +34,18 @@ class SelectionChipFabLab extends StatelessWidget {
             const SizedBox(height: kGapMedium),
             Wrap(
               spacing: kGapMedium,
-              children: start.keys.map(
-                (String key) {
+              children: data.keys.map(
+                (key) {
                   return ChoiceChip(
                     label: Text(
                       key,
                     ),
-                    selected: start[key] != null,
+                    selected: data[key] != false,
                     onSelected: (bool selected) {
-                      onSelected(selected, key);
+                      onSelected(data.update(
+                        key,
+                        (_) => selected,
+                      ));
                     },
                   );
                 },

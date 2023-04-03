@@ -5,9 +5,9 @@ class Compose {
     this.notes,
   });
 
-  final Map<String, int?> main;
+  final Map<String, bool> main;
 
-  final Map<String, int?> machines;
+  final Map<String, bool> machines;
 
   final String? notes;
 
@@ -21,7 +21,7 @@ class Compose {
         build is a """;
 
     main.forEach((key, value) {
-      if (value != null) {
+      if (value) {
         prompt += '$key ';
       }
     });
@@ -29,7 +29,7 @@ class Compose {
     prompt += 'using ';
 
     machines.forEach((key, value) {
-      if (value != null) {
+      if (value) {
         prompt += '$key, ';
       }
     });
